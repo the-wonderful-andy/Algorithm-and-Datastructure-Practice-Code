@@ -4,20 +4,22 @@
 
 #ifndef CALGORITHMS_MAXIMUMSUBARRAY_H
 #define CALGORITHMS_MAXIMUMSUBARRAY_H
+#define INF 1000000000
 #include <string.h>
-int const inf=1000000000;
+
 
 typedef enum resultField{
     START=0,
     END=1,
     SUM=2
 }resultField;
+
 int maxCrossSubarray(const int* targetArry, int* result, int start, int mid, int end);
 int maximumSubarray(const int* targetArry, int* result, int start, int end);
 
 int maxCrossSubarray(const int* targetArry, int* result, int start, int mid, int end){
-    int leftmax=-inf;
-    int rightmax=-inf;
+    int leftmax=-INF;
+    int rightmax=-INF;
     int sum=0;
 
     for(int i=mid;i>=start;i--){
@@ -35,6 +37,7 @@ int maxCrossSubarray(const int* targetArry, int* result, int start, int mid, int
             rightmax=sum;
             result[END]=i;
         }
+        
     }
 
     result[SUM]=leftmax+rightmax;
@@ -48,6 +51,7 @@ int maximumSubarray(const int* targetArry, int* result, int start, int end){
         result[SUM]=targetArry[start];
         return 0;
     }
+
     int leftmax[3];
     int rightmax[3];
     int crossmax[3];

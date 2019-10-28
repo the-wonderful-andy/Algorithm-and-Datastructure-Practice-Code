@@ -1,18 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "MatrixChain_BottomUp.h"
+#include "Optimal_BST.h"
+#include <limits.h>
 
 
 int main() {
-    int dim[]={1, 3, 1, 3, 6, 13, 2, 2};
-    int** solution=(int**)malloc(7*sizeof(int*));
-    for(int i=0; i<7; i++){
-        solution[i]=(int*)malloc(7*sizeof(int));
-    }
+    double p[]={INT_MAX, 0.15, 0.10, 0.05, 0.10, 0.20};
+    double q[]={0.05, 0.10, 0.05, 0.05 ,0.05, 0.10};
+    double ans;
 
-    int c=OptMatrixChain(dim, 7, solution);
-    printf("the minimum of scalar multiplications: %d\n", c);
-    printf("Optimal parenthesizing: ");
-    print_Optimal_Parens(0, 6, solution);
+    ans=optimalBst(p, q, 5);
+    printf("cost: %f\n", ans);
     return 0;
 }
